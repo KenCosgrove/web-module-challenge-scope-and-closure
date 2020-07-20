@@ -130,12 +130,15 @@ function getInningScore() {
 }
 
 function scoreboard(callback, callback2, innings) {
-  let finalHome;
-  let finalAway;
+  let finalHome = [];
+  let finalAway = [];
+
   for (let i = 1; i <= innings; i++) {
+    finalHome.push(callback2());
+    finalAway.push(callback2());
     console.log(`inning ${i}: ${callback()}`);
   }
-  return `Final Score: ${finalHome} - ${finalAway}`;
+  return `Final Score: ${sum([finalHome])} - ${sum([finalAway])}`;
 }
 
 console.log(scoreboard(getInningScore, inning, 9));
