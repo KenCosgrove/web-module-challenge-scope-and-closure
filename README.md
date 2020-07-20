@@ -65,8 +65,17 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+closure is used on line 52 when we return a function within the outer function.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+the string is the same but the number rolled changes because by invoking dansRoll we are calling
+the newRoll function.
+
 c. What is the lexical scope of `newRoll`?
+
+personalDice?
 
 ### Task 2c - Exit Ticket
 

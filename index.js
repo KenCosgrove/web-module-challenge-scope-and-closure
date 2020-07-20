@@ -27,8 +27,8 @@ function processFirstItem(stringList, callback) {
  *
  * 1. What is the difference between counter1 and counter2?
  *
- *counter 1 uses closure while counter2 does not. in counter2 the variable count is 
- in the global scope, while counter1 the count variable is in function scope.
+ *  counter 1 uses closure and counter2 does not. in counter2 the variable count is 
+    in the global scope, while counter1 the count variable is in function scope.
  *
  * 2. Which of the two uses a closure? How can you tell?
  *
@@ -37,6 +37,10 @@ function processFirstItem(stringList, callback) {
  *
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better?
  *
+ * counter1 would be preferable if you want to be able to access counter function as a variable
+ * to be used later
+ * counter2 would be preferable if you plan on using the count variable for other functions
+ * in your code
  *
  */
 
@@ -62,6 +66,21 @@ function counter2() {
 Write a function called `inning` that returns a random number
  of points that a team scored in an inning. 
  This should be a whole number between 0 and 2. */
+
+function personalDice(name) {
+  return function () {
+    // generate random number between 1 and 6
+    const newRoll = Math.floor(Math.random() * 6);
+    console.log(`${name} rolled a ${newRoll}`);
+  };
+}
+
+const dansRoll = personalDice("Dan");
+
+const zoesRoll = personalDice("Zoe");
+
+dansRoll();
+dansRoll();
 
 function inning(/*Code Here*/) {
   const score = Math.floor(Math.random() * 3);
@@ -92,8 +111,7 @@ function finalScore(callback, innings) {
     homeFinal += callback();
     awayFinal += callback();
   }
-  let newObj = { home: homeFinal, away: awayFinal };
-  return newObj;
+  return { home: homeFinal, away: awayFinal };
 }
 console.log(finalScore(inning, 9));
 
@@ -116,6 +134,8 @@ and returns the score at each pont in the game, like so:
 8th inning: awayTeam - homeTeam
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
+
+function getInningScore() {}
 
 function scoreboard(callback, callback2, innings) {}
 
