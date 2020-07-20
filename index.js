@@ -67,24 +67,8 @@ Write a function called `inning` that returns a random number
  of points that a team scored in an inning. 
  This should be a whole number between 0 and 2. */
 
-function personalDice(name) {
-  return function () {
-    // generate random number between 1 and 6
-    const newRoll = Math.floor(Math.random() * 6);
-    console.log(`${name} rolled a ${newRoll}`);
-  };
-}
-
-const dansRoll = personalDice("Dan");
-
-const zoesRoll = personalDice("Zoe");
-
-dansRoll();
-dansRoll();
-
-function inning(/*Code Here*/) {
-  const score = Math.floor(Math.random() * 3);
-  return score;
+function inning() {
+  return Math.floor(Math.random() * 3);
 }
 
 console.log(inning());
@@ -104,12 +88,13 @@ finalScore(inning, 9) might return:
 }
 
 */
+
 function finalScore(callback, innings) {
   let homeFinal = 0;
   let awayFinal = 0;
-  for (let i = 0; i < innings; i++) {
+  for (let i = 1; i <= innings; i++) {
     homeFinal += callback();
-    awayFinal += callback();
+    awayFinal = awayFinal + callback();
   }
   return { home: homeFinal, away: awayFinal };
 }
@@ -135,11 +120,24 @@ and returns the score at each pont in the game, like so:
 9th inning: awayTeam - homeTeam
 Final Score: awayTeam - homeTeam */
 
-function getInningScore() {}
+function getInningScore() {
+  let home = 0;
+  let away = 0;
+  home = home + inning();
+  away = away + inning();
+  let score = `${home} - ${away}`;
+  return score;
+}
 
-function scoreboard(callback, callback2, innings) {}
+function scoreboard(callback, callback2, innings) {
+  let finalHome;
+  let finalAway;
+  for (let i = 1; i <= innings; i++) {
+    console.log(`inning ${i}: ${callback()}`);
+  }
+  return `Final Score: ${finalHome} - ${finalAway}`;
+}
 
-console.log(getInningScore());
 console.log(scoreboard(getInningScore, inning, 9));
 
 /*
